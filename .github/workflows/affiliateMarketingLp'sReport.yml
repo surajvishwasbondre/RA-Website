@@ -18,7 +18,7 @@ jobs:
 
     - name: Run Python Script
       run: |
-        cd C:\\Users\\Suraj\\Desktop\\RA-Website\\src\\test\\java\\com\\tests
+        cd C:/Users/Suraj/Desktop/RA-Website/src/test/java/com/tests
         python your_script.py
 
     - name: Run email code
