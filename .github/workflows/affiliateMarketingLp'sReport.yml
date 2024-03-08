@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  run_job:
+  run_job: LandingPagesAffiliateMarketingTest
     runs-on: ubuntu-latest
 
     steps:
