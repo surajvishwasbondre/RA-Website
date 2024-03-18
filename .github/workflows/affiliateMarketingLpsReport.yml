@@ -1,7 +1,7 @@
 name: affiliateMarketingLpsReport.yml
 on:
-  schedule:
-    - cron: "*/5 * * * *"
+  #schedule:
+   # - cron: "* * * * * *"
   workflow_dispatch: null
 jobs:
   build:
