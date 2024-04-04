@@ -3,15 +3,15 @@ import ssl
 import os
 
 # Get the directory of the current script
-script_dir = os.path.dirname(os.path.abspath(__file__))
+script_dir = os.path.dirname(os.path.abspath("src/test/java/com/tests/LandingPagesAffiliateMarketingTest.java"))
 # Construct the full path to the send_email.py file
-send_email_path = os.path.join(script_dir, 'send_email.py')
+send_email_path = os.path.join(".github/workflows/send_email.py", 'send_email.py')
 
 port = 465
 smtp_server = "smtp.gmail.com"
 USERNAME = os.environ.get('USER_EMAIL')
 PASSWORD = os.environ.get('USER_PASSWORD')
-RECIVER1 = os.environ.get('USER_EMAIL')
+RECIVER1 = os.environ.get('RECIVER1NAME')
 # RECIVER2 = os.environ.get('USER_EMAIL')
 # RECIVER3 = os.environ.get('USER_EMAIL')
 
