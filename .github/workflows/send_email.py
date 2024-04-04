@@ -5,7 +5,7 @@ import os
 # Get the directory of the current script
 script_dir = os.path.dirname(os.path.abspath("src/test/java/com/tests/LandingPagesAffiliateMarketingTest.java"))
 # Construct the full path to the send_email.py file
-send_email_path = os.path.join(".github/workflows/send_email.py", 'send_email.py')
+send_email_path = os.path.join("https://github.com/surajvishwasbondre/RA-Website/blob/main/.github/workflows/send_email.py", 'send_email.py')
 
 port = 465
 smtp_server = "smtp.gmail.com"
