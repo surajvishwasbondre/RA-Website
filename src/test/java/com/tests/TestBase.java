@@ -86,7 +86,7 @@ public class TestBase {
 	public void setupExtentEnv()
 	{
 		
-		htmlreporter =new ExtentHtmlReporter("RAWebsite/extentreport/extent-report.html");
+		htmlreporter =new ExtentHtmlReporter("extentreport/extent-report.html");
 		htmlreporter.config().setDocumentTitle("Automation Report");
 		htmlreporter.config().setReportName("functional report");
 		htmlreporter.config().setTheme(Theme.STANDARD);
