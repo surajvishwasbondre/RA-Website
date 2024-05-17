@@ -41,7 +41,7 @@ public class TestBase {
 		//proprties file reading
 		try{
 		prop=new Properties();//1
-		FileInputStream ip=new FileInputStream("src/test/resources/config.properties");//2
+		FileInputStream ip=new FileInputStream("scr/test/resources/config.properties");//2
 		prop.load(ip);//3
 	}catch(FileNotFoundException e)
 	{
@@ -52,7 +52,7 @@ public class TestBase {
 	}
 	//log file setup
 	logger=Logger.getLogger(TestBase.class);  //1
-	PropertyConfigurator.configure("src/test/resources/log4j.properties");//2
+	PropertyConfigurator.configure("scr/test/resources/log4j.properties");//2
 	//it is for configuring the log4j setup to our app
 	}
 	
