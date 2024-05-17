@@ -1,55 +1,54 @@
-name: Automation Script
+name: Run Java Automation Script
 
 on:
   push:
     branches:
       - main
-  #schedule:
-   # - cron: "* * * * * *"
-  workflow_dispatch: null
-
+  schedule:
+    - cron: '* * * * *'  # Adjust this cron expression to your desired schedule
+      
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-      - name: Set up JDK 11
-        uses: actions/setup-java@v3
-        with:
-          java-version: '11'
+    - name: Set up JDK
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'adopt'
+        java-version: '11'  # Specify your Java version here
 
-      - name: Cache Maven packages
-        uses: actions/cache@v3
-        with:
-          path: ~/.m2
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-m2
+    - name: Cache Maven packages
+      uses: actions/cache@v2
+      with:
+        path: ~/.m2
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: ${{ runner.os }}-maven
 
-      - name: Install dependencies
-        run: mvn install
+    - name: Install dependencies
+      run: mvn install
 
-      - name: Run tests
-        run: mvn test
+    - name: Run tests
+      run: mvn test -Dtest=YourTestClassName
 
-      - name: Archive test results
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: test-results
-          path: TestData/LandingPageAutomation-Affiliate Marketing.xlsx # Update this path
+    - name: Upload test result file
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-results
+        path: path/to/your/test/data/file  # Specify the path to your result file
 
-      - name: Send Email with Results
-        uses: dawidd6/action-send-mail@v3
-        with:
-          server_address: smtp.gmail.com
-          server_port: 465
-          username: ${{ secrets.MAIL_USERNAME }}
-          password: ${{ secrets.MAIL_PASSWORD }}
-          subject: Test Results
-          body: Please find the attached test results.
-          to: surajbondre1176@gmail.com
-          from: surajbondre7@gmail.com
-          attachments: TestData/LandingPageAutomation-Affiliate Marketing.xlsx # Update this path
+    - name: Send email with test results
+      uses: dawidd6/action-send-mail@v3
+      with:
+        server_address: smtp.example.com
+        server_port: 587
+        username: ${{ secrets.SMTP_USERNAME }}
+        password: ${{ secrets.SMTP_PASSWORD }}
+        subject: Test Results
+        body: The test results are attached.
+        to: recipient@example.com
+        from: sender@example.com
+        attachments: path/to/your/test/data/file  # Specify the path to your result file
