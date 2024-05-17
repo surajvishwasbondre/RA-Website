@@ -1,0 +1,54 @@
+name: Automation Script
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '* * * * *' # Runs every day at midnight
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+
+      - name: Cache Maven packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+
+      - name: Install dependencies
+        run: mvn install
+
+      - name: Run tests
+        run: mvn test
+
+      - name: Archive test results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results
+          path: path/to/your/test-results/file.xlsx # Update this path
+
+      - name: Send Email with Results
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: Test Results
+          body: Please find the attached test results.
+          to: recipient@example.com
+          from: sender@example.com
+          attachments: path/to/your/test-results/file.xlsx # Update this path
