@@ -44,12 +44,12 @@ public class LandingPagesAffiliateMarketingTest extends TestBase{
 	@Test(priority=1)
 	public void VerifyAffiliateMarketingLandingPages() throws InterruptedException, IOException {
         
-//    	System.setProperty("webdriver.chrome.driver", "D:\\Eclipse Workplace\\RAWebsite\\drivers\\chromedriver.exe");
+//    	System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
 //        WebDriver driver = new ChromeDriver();
 //        driver.manage().window().maximize();
         
         // Path to Excel file
-        String excelFilePath ="D:\\Eclipse Workplace\\RAWebsite\\TestData\\LandingPageAutomation-Affiliate Marketing.xlsx";
+        String excelFilePath ="TestData/LandingPageAutomation-Affiliate Marketing.xlsx";
 
          FileInputStream file = new FileInputStream(excelFilePath);
              Workbook workbook = new XSSFWorkbook(file); 
@@ -117,7 +117,7 @@ public class LandingPagesAffiliateMarketingTest extends TestBase{
 //                    }
                 }
          // Save the updated Excel file
-            FileOutputStream out = new FileOutputStream("D:\\Eclipse Workplace\\RAWebsite\\TestData\\LandingPageAutomation-Affiliate Marketing.xlsx");
+            FileOutputStream out = new FileOutputStream("TestData/LandingPageAutomation-Affiliate Marketing.xlsx");
             workbook.write(out);
             out.close();
      
