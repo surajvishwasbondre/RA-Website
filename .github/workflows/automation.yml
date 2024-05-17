@@ -38,17 +38,17 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: test-results
-        path: path/to/your/test/data/file  # Specify the path to your result file
+        path: TestData/LandingPageAutomation-Affiliate Marketing.xlsx  # Specify the path to your result file
 
     - name: Send email with test results
       uses: dawidd6/action-send-mail@v3
       with:
         server_address: smtp.example.com
         server_port: 587
-        username: ${{ secrets.SMTP_USERNAME }}
-        password: ${{ secrets.SMTP_PASSWORD }}
-        subject: Test Results
+        username: ${{ secrets.MAIL_USERNAME }}
+        password: ${{ secrets.MAIL_PASSWORD }}
+        subject: Landing Pages Test Results
         body: The test results are attached.
         to: surajbondre@1176gmail.com
         from: surajbondre7@gmail.com
-        attachments: path/to/your/test/data/file  # Specify the path to your result file
+        attachments: TestData/LandingPageAutomation-Affiliate Marketing.xlsx  # Specify the path to your result file
