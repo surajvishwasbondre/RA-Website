@@ -9,11 +9,15 @@
 name: Java CI with Maven
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
+ # push:
+   # branches: [ "main" ]
+ # pull_request:
+   # branches: [ "main" ]
+  schedule:
+    # Schedule your workflow to run at specific times. This example runs daily at 05:00 UTC.
+  #  - cron:  '* * * * *'
+  workflow_dispatch:
+    # This allows you to manually trigger the workflow from the Actions tab.
 jobs:
   build:
 
