@@ -31,6 +31,9 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
+    - name: set github token
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
