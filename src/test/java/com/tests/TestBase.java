@@ -41,8 +41,8 @@ public class TestBase {
 		//proprties file reading
 		try{
 		prop=new Properties();//1
-                InputStream ip = getClass().getClassLoader().getResourceAsStream("config.properties");
-		//FileInputStream ip=new FileInputStream("RAWebsite\\src\\test\\resources\\config.properties");//2
+                //InputStream ip = getClass().getClassLoader().getResourceAsStream("config.properties");
+		FileInputStream ip=new FileInputStream("RAWebsite\\src\\test\\resources\\config.properties");//2
 		prop.load(ip);//3
 	}catch(FileNotFoundException e)
 	{
